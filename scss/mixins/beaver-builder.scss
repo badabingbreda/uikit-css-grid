@@ -1,0 +1,46 @@
+@mixin beaver-builder-rules( $responsive: '' ) {
+
+        @each $name,$gap in $grid-gaps {
+            &.#{$class-prefix}-gap-#{$name}#{$responsive} 
+            .fl-col-content 
+                { gap: #{$gap}; }
+        }
+    
+        @each $i in $col-spans {
+            &.#{$class-prefix}-cols-#{$i}#{$responsive} 
+            .fl-col-content 
+                { grid-template-columns: repeat( #{$i}, 1fr); }
+        }
+
+        @each $i in $col-spans {
+            &.#{$class-prefix}-rows-#{$i}#{$responsive} 
+            .fl-col-content 
+                { grid-template-rows: repeat( #{$i}, 1fr); }
+        }
+
+
+}
+
+@mixin max-heights() {
+    .fl-module {
+
+        &.uk-height-1-1,
+        &.#{$class-prefix}-height-1-1 {
+            .fl-module-content { height: calc(100%); }
+        } 
+        &.uk-height-1-10,
+        &.#{$class-prefix}-height-1-10 {
+            .fl-module-content { height: calc(100% -20px); }
+        } 
+        &.uk-height-1-20,
+        &.#{$class-prefix}-height-1-20 {
+            .fl-module-content { height: calc(100% -40px); }
+        } 
+    }    
+}
+
+@mixin auto-max-heights() {
+    &.#{$class-prefix}-auto-height-1-1 {
+        .fl-module-content { height: calc(100%); }
+    }
+}

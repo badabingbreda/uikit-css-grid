@@ -1,0 +1,64 @@
+@mixin grid-rules($col-spans,$row-spans,$responsive:''){
+
+    @include cols( $col-spans,$responsive);
+    @include rows( $col-spans,$responsive);
+    @include gaps( $responsive);
+    @include col-span( $col-spans,$responsive);
+    @include row-span( $row-spans,$responsive);
+    @include col-start( $col-spans,$responsive);
+    @include col-end( $col-spans,$responsive);
+    @include row-start( $row-spans,$responsive);
+    @include row-end( $row-spans,$responsive);
+    
+}
+
+@mixin cols($col-spans,$responsive:'') {
+    @each $i in $col-spans {
+        *:not(.fl-col).#{$class-prefix}-cols-#{$i}#{$responsive} { grid-template-columns: repeat( #{$i}, 1fr); }
+    }
+}
+
+@mixin rows($col-spans,$responsive:'') {
+    @each $i in $col-spans {
+        *:not(.fl-col).#{$class-prefix}-rows-#{$i}#{$responsive} { grid-template-rows: repeat( #{$i}, 1fr); }
+    }
+}
+
+@mixin gaps( $responsive: '') {
+    @each $name,$gap in $grid-gaps {
+        *:not(.fl-col).#{$class-prefix}-gap-#{$name}#{$responsive} 
+        { gap: #{$gap}; }
+    }
+}
+
+
+@mixin col-span( $col-spans,$responsive:'') {
+    @each $i in $col-spans {
+        .#{$class-prefix}-col-span-#{$i}#{$responsive} { grid-column: span #{$i}; }
+    }
+}
+@mixin row-span( $col-spans,$responsive:'') {
+    @each $i in $col-spans {
+        .#{$class-prefix}-row-span-#{$i}#{$responsive} { grid-row: span #{$i}; }
+    }
+}
+@mixin col-start( $col-spans,$responsive:'') {
+    @each $i in $col-spans {
+        .#{$class-prefix}-col-start-#{$i}#{$responsive} { grid-column-start: #{$i}; }
+    }
+}
+@mixin col-end( $col-spans,$responsive:'') {
+    @each $i in $col-spans {
+        .#{$class-prefix}-col-end-#{$i}#{$responsive} { grid-column-end: #{$i}; }
+    }
+}
+@mixin row-start( $col-spans,$responsive:'') {
+    @each $i in $col-spans {
+        .#{$class-prefix}-row-start-#{$i}#{$responsive} { grid-row-start: #{$i}; }
+    }
+}
+@mixin row-end( $col-spans,$responsive:'') {
+    @each $i in $col-spans {
+        .#{$class-prefix}-row-end-#{$i}#{$responsive} { grid-row-end: #{$i}; }
+    }
+}

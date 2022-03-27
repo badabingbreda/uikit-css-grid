@@ -1,0 +1,50 @@
+@import 'mixins/css-grid';
+@import 'mixins/beaver-builder';
+
+$class-prefix : 'cssgrid';
+$breakpoint-small: 640px !default;
+$breakpoint-medium: 960px !default;
+$breakpoint-large: 1200px !default;
+$breakpoint-xlarge: 1600px !default;
+
+$grid-areas: 'one', 'two', 'three', 'four', 'five' , 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve';
+
+$row-spans: 1, 2, 3, 4, 5, 6;
+$col-spans: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+
+$grid-gaps: ( 'small': 12px, 'medium': 24px, 'large': 36px );
+
+*:not(.fl-col).#{$class-prefix},
+*[#{$class-prefix}] {
+    display: grid;
+}
+
+@each $area in $grid-areas {
+    .#{$class-prefix}-area-#{$area} {
+        grid-area: #{$area};
+    }
+}
+
+@include grid-rules( $col-spans, $row-spans );
+
+/* Phone landscape and bigger */
+@media (min-width: $breakpoint-small) {
+    @include grid-rules( $col-spans, $row-spans , '\\@s' );
+}
+
+/* Tablet and bigger */
+@media (min-width: $breakpoint-medium) {
+    @include grid-rules( $col-spans, $row-spans , '\\@m' );
+}
+
+/* Desktop and bigger */
+@media (min-width: $breakpoint-large) {
+    @include grid-rules( $col-spans, $row-spans , '\\@l' );
+}
+
+/* Desktop Large and bigger */
+@media (min-width: $breakpoint-medium) {
+    @include grid-rules( $col-spans, $row-spans , '\\@xl' );
+}
+
+@import 'beaver-builder';

@@ -1,0 +1,77 @@
+div[class*=fl-node] {
+    &.#{$class-prefix} {
+
+        .fl-col-content { display: grid; }
+
+        @include beaver-builder-rules();
+
+        @include auto-max-heights();
+
+    }
+
+
+
+    @include max-heights();
+}
+
+/* compensate for the builders padding remove */
+@media (max-width: $breakpoint-medium) {
+    div[class*=fl-node] {
+        &.#{$class-prefix} {
+
+            .fl-col-content {
+                padding: 0 20px;
+            }
+
+        }
+    }
+}
+
+/* Phone landscape and bigger */
+@media (min-width: $breakpoint-small) {
+
+    div[class*=fl-node] {
+        &.#{$class-prefix} {
+
+            @include beaver-builder-rules( '\\@s' );
+           
+        }
+    }
+}
+
+
+/* Tablet and bigger */
+@media (min-width: $breakpoint-medium) {
+
+    div[class*=fl-node] {
+        &.#{$class-prefix} {
+
+            @include beaver-builder-rules( '\\@m' );
+                    
+        }
+    }
+}
+
+/* Desktop and bigger */
+@media (min-width: $breakpoint-large) {
+
+    div[class*=fl-node] {
+        &.#{$class-prefix} {
+
+            @include beaver-builder-rules( '\\@l' );
+                    
+        }
+    }
+}
+
+/* Desktop Large and bigger */
+@media (min-width: $breakpoint-xlarge) {
+
+    div[class*=fl-node] {
+        &.#{$class-prefix} {
+
+            @include beaver-builder-rules( '\\@xl' );
+                    
+        }
+    }
+}

@@ -59,12 +59,12 @@ There are 4 responsive breakpoints. If no @s, @m, @l or @xl is set, the settings
 
 ### **Example**
 
-    cssgrid cssgrid-1 cssgrid-2@s cssgrid-cols-4@m cssgrid-gap-medium cssgrid-max-height-1-1
+    cssgrid cssgrid-cols-1 cssgrid-cols-2@s cssgrid-cols-4@m cssgrid-gap-medium cssgrid-max-height-1-1
 
     Adding these classes on a Beaver Builder columns will add a
-    - grid of 1 for small screens;
-    - grid of 2 screens with a min width of 640px; and a 
-    - grid of 4 for screen with a min width of 960px;
+    - grid of 1 for all screens (if no additional breakpoints are set);
+    - grid of 2 for screens with a min width of 640px; and a 
+    - grid of 4 for screens with a min width of 960px;
     - grid gap of 24px on all screen sizes;
     - make all fl-module-content elements 100% in height
         (you will however still need to remove the padding on all individual modules);

@@ -9,6 +9,6 @@ class Init {
     }
 
     public function enqueue_style() {
-        wp_enqueue_style( 'uikit-css-grid', UIKITCSSGRID_URL . 'css/uikit-css-grid.css' , array() , UIKITCSSGRID_VERSION, 'all' );
+        wp_enqueue_style( 'uikit-css-grid', UIKITCSSGRID_URL . 'css/uikit-css-grid.min.css' , array() , UIKITCSSGRID_VERSION, 'all' );
     }
 }

@@ -1,20 +1,32 @@
+/////////////////////////////////
+//
+//	CSS Grid for Beaver Builder
+//
+/////////////////////////////////
+
 @import 'mixins/css-grid';
 @import 'mixins/beaver-builder';
 
-$class-prefix : 'cssgrid';
-$breakpoint-small: 640px !default;
-$breakpoint-medium: 960px !default;
-$breakpoint-large: 1200px !default;
-$breakpoint-xlarge: 1600px !default;
+$class-prefix :             'cssgrid';              // prefix for our grid classes
 
-$grid-areas: 'one', 'two', 'three', 'four', 'five' , 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve';
+$breakpoint-small:          640px !default;			// breakpoint for small screen sizes
+$breakpoint-medium:         960px !default;         // breakpoint for medium screen sizes
+$breakpoint-large:          1200px !default;        // breakpoint for large screen sizes
+$breakpoint-xlarge:         1600px !default;        // breakpoint for extra large screen sizes
 
-$row-spans: 1, 2, 3, 4, 5, 6;
-$col-spans: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+$include-grid-start-end:    false !default;         // include css styles for grid-start and grid-end (hugely reduces css size if set to false)
+$include-row-grid:          false !default;         //include css styles for turning a bb row into a grid as well (and it's fl-row-content)
 
-$grid-gaps: ( 'small': 12px, 'medium': 24px, 'large': 36px );
+$grid-areas:                'one', 'two', 'three', 'four', 'five' , 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve';    // list of grid template areas
 
-*:not(.fl-col).#{$class-prefix},
+$row-spans:                 6;                      // supported row spans
+$col-spans:                 12;                     // supported col spans
+
+$grid-gaps:                 ( 'small': 12px, 'medium': 24px, 'large': 36px );
+
+// ---------- start of stylesheet
+
+*:not(.fl-col,.fl-row).#{$class-prefix},
 *[#{$class-prefix}] {
     display: grid;
 }
@@ -26,6 +38,8 @@ $grid-gaps: ( 'small': 12px, 'medium': 24px, 'large': 36px );
 }
 
 @include grid-rules( $col-spans, $row-spans );
+
+@include align-items();
 
 /* Phone landscape and bigger */
 @media (min-width: $breakpoint-small) {
@@ -43,7 +57,7 @@ $grid-gaps: ( 'small': 12px, 'medium': 24px, 'large': 36px );
 }
 
 /* Desktop Large and bigger */
-@media (min-width: $breakpoint-medium) {
+@media (min-width: $breakpoint-xlarge) {
     @include grid-rules( $col-spans, $row-spans , '\\@xl' );
 }
 

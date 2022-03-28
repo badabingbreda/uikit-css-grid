@@ -1,25 +1,37 @@
-@mixin beaver-builder-rules( $responsive: '' ) {
+@mixin beaver-builder-rules( $responsive: '' , $col-row : 'col' ) {
 
         @each $name,$gap in $grid-gaps {
             &.#{$class-prefix}-gap-#{$name}#{$responsive} 
-            .fl-col-content 
+            .fl-#{$col-row}-content 
                 { gap: #{$gap}; }
         }
     
-        @each $i in $col-spans {
+        @for $i from 1 through $col-spans {
             &.#{$class-prefix}-cols-#{$i}#{$responsive} 
-            .fl-col-content 
+            .fl-#{$col-row}-content 
                 { grid-template-columns: repeat( #{$i}, 1fr); }
         }
 
-        @each $i in $col-spans {
+        @for $i from 1 through $col-spans {
             &.#{$class-prefix}-rows-#{$i}#{$responsive} 
-            .fl-col-content 
+            .fl-#{$col-row}-content 
                 { grid-template-rows: repeat( #{$i}, 1fr); }
         }
 
 
 }
+
+@mixin beaver-builder-align-block( $col-row : 'col' ) {
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Box_Alignment_in_CSS_Grid_Layout
+
+    &.#{$class-prefix}-align-between {
+        .fl-#{$col-row}-content { align-content: space-between; }
+    }
+    &.#{$class-prefix}-align-around { 
+        .fl-#{$col-row}-content { align-content: space-around; }
+    }
+}
+
 
 @mixin max-heights() {
     .fl-module {

@@ -5,60 +5,76 @@
     @include gaps( $responsive);
     @include col-span( $col-spans,$responsive);
     @include row-span( $row-spans,$responsive);
-    @include col-start( $col-spans,$responsive);
-    @include col-end( $col-spans,$responsive);
-    @include row-start( $row-spans,$responsive);
-    @include row-end( $row-spans,$responsive);
+
+    @if ( $include-grid-start-end ) {
+        @include col-start( $col-spans,$responsive);
+        @include col-end( $col-spans,$responsive);
+        @include row-start( $row-spans,$responsive);
+        @include row-end( $row-spans,$responsive);
+    }
     
 }
 
+@mixin align-items( ) {
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Box_Alignment_in_CSS_Grid_Layout
+
+    .#{$class-prefix}-align-between { align-content: space-between; }
+    .#{$class-prefix}-align-around { align-content: space-around; }
+    .#{$class-prefix}-align-center { align-self: center; }
+    .#{$class-prefix}-align-start { align-self: start; }
+    .#{$class-prefix}-align-end { align-self: end; }
+    .#{$class-prefix}-justify-center { justify-self: center; }
+    .#{$class-prefix}-justify-start { justify-self: start; }
+    .#{$class-prefix}-justify-end { justify-self: end; }
+}
+
 @mixin cols($col-spans,$responsive:'') {
-    @each $i in $col-spans {
-        *:not(.fl-col).#{$class-prefix}-cols-#{$i}#{$responsive} { grid-template-columns: repeat( #{$i}, 1fr); }
+    @for $i from 1 through $col-spans {
+        *:not(.fl-col,.fl-row).#{$class-prefix}-cols-#{$i}#{$responsive} { grid-template-columns: repeat( #{$i}, 1fr); }
     }
 }
 
 @mixin rows($col-spans,$responsive:'') {
-    @each $i in $col-spans {
-        *:not(.fl-col).#{$class-prefix}-rows-#{$i}#{$responsive} { grid-template-rows: repeat( #{$i}, 1fr); }
+    @for $i from 1 through $col-spans {
+        *:not(.fl-col,.fl-row).#{$class-prefix}-rows-#{$i}#{$responsive} { grid-template-rows: repeat( #{$i}, 1fr); }
     }
 }
 
 @mixin gaps( $responsive: '') {
     @each $name,$gap in $grid-gaps {
-        *:not(.fl-col).#{$class-prefix}-gap-#{$name}#{$responsive} 
+        *:not(.fl-col,.fl-row).#{$class-prefix}-gap-#{$name}#{$responsive} 
         { gap: #{$gap}; }
     }
 }
 
 
 @mixin col-span( $col-spans,$responsive:'') {
-    @each $i in $col-spans {
+    @for $i from 1 through $col-spans {
         .#{$class-prefix}-col-span-#{$i}#{$responsive} { grid-column: span #{$i}; }
     }
 }
 @mixin row-span( $col-spans,$responsive:'') {
-    @each $i in $col-spans {
+    @for $i from 1 through $col-spans {
         .#{$class-prefix}-row-span-#{$i}#{$responsive} { grid-row: span #{$i}; }
     }
 }
 @mixin col-start( $col-spans,$responsive:'') {
-    @each $i in $col-spans {
+    @for $i from 1 through $col-spans {
         .#{$class-prefix}-col-start-#{$i}#{$responsive} { grid-column-start: #{$i}; }
     }
 }
 @mixin col-end( $col-spans,$responsive:'') {
-    @each $i in $col-spans {
+    @for $i from 1 through $col-spans {
         .#{$class-prefix}-col-end-#{$i}#{$responsive} { grid-column-end: #{$i}; }
     }
 }
 @mixin row-start( $col-spans,$responsive:'') {
-    @each $i in $col-spans {
+    @for $i from 1 through $col-spans {
         .#{$class-prefix}-row-start-#{$i}#{$responsive} { grid-row-start: #{$i}; }
     }
 }
 @mixin row-end( $col-spans,$responsive:'') {
-    @each $i in $col-spans {
+    @for $i from 1 through $col-spans {
         .#{$class-prefix}-row-end-#{$i}#{$responsive} { grid-row-end: #{$i}; }
     }
 }

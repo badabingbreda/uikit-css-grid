@@ -1,53 +1,79 @@
-div[class*=fl-node] {
-    &.#{$class-prefix} {
-
-        .fl-col-content { display: grid; }
-
-        @include beaver-builder-rules();
-
-        @include auto-max-heights();
-
+div[class*=fl-row].#{$class-prefix} .fl-row-content,
+div[class*=fl-col].#{$class-prefix} .fl-col-content {
+    display: grid; 
+    &::before, &::after {
+        position: absolute;
+        left: -100vw;
     }
+}
 
+div[class*=fl-col].#{$class-prefix} {
 
-
+    @include beaver-builder-rules( ''  , 'col' );
+    @include auto-max-heights();
+    @include beaver-builder-align-block( 'col' );
     @include max-heights();
 }
+// if also set to include row as css grid
+@if $include-row-grid {
+
+    div[class*=fl-row].#{$class-prefix} {
+
+        @include beaver-builder-rules( ''  , 'row' );
+        @include auto-max-heights();
+        @include beaver-builder-align-block( 'row' );
+        @include max-heights();
+    }
+    
+}
+
 
 /* compensate for the builders padding remove */
 @media (max-width: $breakpoint-medium) {
-    div[class*=fl-node] {
-        &.#{$class-prefix} {
 
-            .fl-col-content {
-                padding: 0 20px;
-            }
 
+    div[class*=fl-col].#{$class-prefix} .fl-col-content
+     {
+        padding: 0 20px;
+    }
+
+    // if also set to include row as css grid
+    @if $include-row-grid {
+        div[class*=fl-row].#{$class-prefix} .fl-row-content {
+            padding: 0 20px;
         }
     }
+
 }
 
 /* Phone landscape and bigger */
 @media (min-width: $breakpoint-small) {
 
-    div[class*=fl-node] {
-        &.#{$class-prefix} {
+    div[class*=fl-col].#{$class-prefix} {
+        @include beaver-builder-rules( '\\@s' );
+    }
 
-            @include beaver-builder-rules( '\\@s' );
-           
+    // if also set to include row as css grid
+    @if $include-row-grid {
+        div[class*=fl-row].#{$class-prefix} {
+            @include beaver-builder-rules( '\\@s' , 'row' );
         }
     }
+
 }
 
 
 /* Tablet and bigger */
 @media (min-width: $breakpoint-medium) {
 
-    div[class*=fl-node] {
-        &.#{$class-prefix} {
+    div[class*=fl-col].#{$class-prefix} {
+        @include beaver-builder-rules( '\\@m' );
+    }
 
-            @include beaver-builder-rules( '\\@m' );
-                    
+    // if also set to include row as css grid
+    @if $include-row-grid {
+        div[class*=fl-row].#{$class-prefix} {
+            @include beaver-builder-rules( '\\@m' , 'row' );
         }
     }
 }
@@ -55,11 +81,14 @@ div[class*=fl-node] {
 /* Desktop and bigger */
 @media (min-width: $breakpoint-large) {
 
-    div[class*=fl-node] {
-        &.#{$class-prefix} {
-
+    div[class*=fl-col].#{$class-prefix} {
             @include beaver-builder-rules( '\\@l' );
-                    
+    }
+    
+    // if also set to include row as css grid
+    @if $include-row-grid {
+        div[class*=fl-row].#{$class-prefix} {
+            @include beaver-builder-rules( '\\@l' , 'row' );
         }
     }
 }
@@ -67,11 +96,14 @@ div[class*=fl-node] {
 /* Desktop Large and bigger */
 @media (min-width: $breakpoint-xlarge) {
 
-    div[class*=fl-node] {
-        &.#{$class-prefix} {
+    div[class*=fl-col].#{$class-prefix} {
+        @include beaver-builder-rules( '\\@xl' );
+    }
 
-            @include beaver-builder-rules( '\\@xl' );
-                    
+    // if also set to include row as css grid
+    @if $include-row-grid {
+        div[class*=fl-row].#{$class-prefix} {
+            @include beaver-builder-rules( '\\@xl' , 'row' );
         }
     }
 }

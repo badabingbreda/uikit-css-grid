@@ -24,6 +24,11 @@ CSS Classes to add easier use of CSS Grid with Beaver Builder.
 |`cssgrid-area-one`,<br>`cssgrid-area-two`<br>...<br>`cssgrid-area-twelve`|bb module|define cssgrid area|
 |`cssgrid-col-span-1`,<br>`cssgrid-col-span-2`,<br>`cssgrid-col-span-3`,<br>...<br>`cssgrid-col-span-12`|bb module|set the colspan for a module|
 |`cssgrid-row-span-1`,<br>`cssgrid-row-span-2`,<br>`cssgrid-row-span-3`,<br>...<br>`cssgrid-row-span-6|bb module|set the rowspan for a module|
+
+The following classes can be turned on by recompiling the SCSS with the variable `$include-grid-start-end` set to `true`:
+
+|Classname|Use on|Purpose|
+|---|---|---|
 |`cssgrid-col-start-1`,<br>`cssgrid-col-start-2`,<br>`cssgrid-col-start-3`,<br>...<br>`cssgrid-col-start-12`|bb module|set the column-start for a module|
 |`cssgrid-col-end-1`,<br>`cssgrid-col-end-2`,<br>`cssgrid-col-end-3`,<br>...<br>`cssgrid-col-end-12`|bb module|set the column-end for a module|
 |`cssgrid-row-start-1`,<br>`cssgrid-row-start-2`,<br>`cssgrid-row-start-3`,<br>...<br>`cssgrid-row-start-12`|bb module|set the row-start for a module|
@@ -42,12 +47,32 @@ The following classes also have responsive settings
 |`cssgrid-rows-{x}@s`,<br>`cssgrid-rows-{x}@m`,<br>`cssgrid-rows-{x}@l`,<br>`cssgrid-rows-{x}@xl`|bb column|Use different rows for breakpoint (where {x} is # of rows)|
 |`cssgrid-col-span-{x}@s`,<br>`cssgrid-col-span-{x}@m`,<br>`cssgrid-col-span-{x}@l`,<br>`cssgrid-col-span-{x}@xl`|bb module|Use different col span for breakpoint (where {x} is # of cols)|
 |`cssgrid-row-span-{x}@s`,<br>`cssgrid-row-span-{x}@m`,<br>`cssgrid-row-span-{x}@l`,<br>`cssgrid-row-span-{x}@xl`|bb module|Use different row span for breakpoint (where {x} is # of rows)|
+
+The following classes can be turned on by recompiling the SCSS with the variable `$include-grid-start-end` set to `true`:
+
+|Classname|Use on|Purpose|
+|---|---|---|
 |`cssgrid-col-start-{x}@s`,<br>`cssgrid-col-start-{x}@m`,<br>`cssgrid-col-start-{x}@l`,<br>`cssgrid-col-start-{x}@xl`|bb module|Use different col span for breakpoint (where {x} is # of cols)|
 |`cssgrid-col-end-{x}@s`,<br>`cssgrid-col-end-{x}@m`,<br>`cssgrid-col-end-{x}@l`,<br>`cssgrid-col-end-{x}@xl`|bb module|Use different col span for breakpoint (where {x} is # of cols)|
 |`cssgrid-row-start-{x}@s`,<br>`cssgrid-row-start-{x}@m`,<br>`cssgrid-row-start-{x}@l`,<br>`cssgrid-row-start-{x}@xl`|bb module|Use different row span for breakpoint (where {x} is # of rows)|
 |`cssgrid-row-end-{x}@s`,<br>`cssgrid-row-end-{x}@m`,<br>`cssgrid-row-end-{x}@l`,<br>`cssgrid-row-end-{x}@xl`|bb module|Use different row span for breakpoint (where {x} is # of rows)|
 
-## 1.3 Reponsive Breakpoints
+## 1.3 Alignment classes
+
+|Classname|Use on|Purpose|
+|---|---|---|
+|`cssgrid-align-start`|bb column|Vertical align to start/top|
+|`cssgrid-align-end`|bb column|Vertical align to end/bottom|
+|`cssgrid-align-between`|bb column|Vertical align between|
+|`cssgrid-align-around`|bb column|Vertical align around|
+|`cssgrid-align-start`|bb module|Vertical align to start/top|
+|`cssgrid-align-end`|bb module|Vertical align to end/bottom|
+|`cssgrid-align-center`|bb module|Vertical align to center|
+|`cssgrid-justify-start`|bb module|Horizontal align to start/top|
+|`cssgrid-justify-end`|bb module|Horizontal align to end/bottom|
+|`cssgrid-justify-center`|bb module|Horizontal align to center|
+
+## 1.4 Reponsive Breakpoints
 There are 4 responsive breakpoints. If no @s, @m, @l or @xl is set, the settings will apply to all resolutions.
 
 |breakpoint|affects|
@@ -125,8 +150,14 @@ part 3: https://youtu.be/F63mypuMtF0
 
 part 4: https://youtu.be/f2nWS2MaW6o
 
-# 4 Changelog
+# 4 Optional settings
+
+To reduce filesize the col-start/col-end and row-start/row-end properties are excluded from compiling.
+
+# 5 Changelog
 
 |version|date|changes|
 |---|---|---|
-|1.0.0|27/3/2022|Initial beta version
+|1.2.0|28/3/2022|Moved col-start/col-end and row-start/row-end to optional status; Added optional fl-row css-grid;|
+|1.1.0|27/3/2022|Fixed xl breakpoint not set correctly, added align and justify classes|
+|1.0.0|27/3/2022|Initial beta version|

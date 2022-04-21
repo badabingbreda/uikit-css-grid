@@ -10,7 +10,7 @@
  * Plugin Name: UIkit CSS Grid
  * Plugin URI:  https://www.badabing.nl
  * Description: CSS Grid for Beaver Builder
- * Version:     1.2.0
+ * Version:     1.2.1
  * Author:      Badabingbreda
  * Author URI:  https://www.badabing.nl
  * Text Domain: uikit-css-grid
@@ -34,7 +34,7 @@ use UIKitCSSGrid\Init;
 		}
 	}
 
-    define( 'UIKITCSSGRID_VERSION' 	, '1.2.0' );
+    define( 'UIKITCSSGRID_VERSION' 	, '1.2.1' );
     define( 'UIKITCSSGRID_DIR'		, plugin_dir_path( __FILE__ ) );
     define( 'UIKITCSSGRID_FILE'	, __FILE__ );
     define( 'UIKITCSSGRID_URL' 	, plugins_url( '/', __FILE__ ) );

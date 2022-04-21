@@ -158,6 +158,7 @@ To reduce filesize the col-start/col-end and row-start/row-end properties are ex
 
 |version|date|changes|
 |---|---|---|
+|1.2.1|21/4/2022|Fixed enqueue style to load statically;|
 |1.2.0|28/3/2022|Moved col-start/col-end and row-start/row-end to optional status; Added optional fl-row css-grid;|
 |1.1.0|27/3/2022|Fixed xl breakpoint not set correctly, added align and justify classes|
 |1.0.0|27/3/2022|Initial beta version|
